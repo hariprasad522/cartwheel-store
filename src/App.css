@@ -1,6 +1,31 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --color-brand: #0f766e;
-  
+:root {
+  --page: #ffffff;
+  --panel: #f8fafc;
+  --line: #e2e8f0;
+  --ink: #0f172a;
+  --muted: #475569;
+}
+
+.dark {
+  --page: #0b0b14;
+  --panel: #14141f;
+  --line: #2e2e45;
+  --ink: #ffffff;
+  --muted: #a1a1b5;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-brand: #6d28d9;
+  --color-brand-deep: #4c1d95;
+  --color-brand-soft: #ede9fe;
+  --color-deal: #c2410c;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }

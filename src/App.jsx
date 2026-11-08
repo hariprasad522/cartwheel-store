@@ -1,16 +1,13 @@
 import "./App.css";
 import Content from "./components/Content";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
-
+import Navbar from "./components/Header";
 
 function App() {
   return (
-    <>
-    <Header/>
-    <Content/>
-    <Footer/>
-    </>
+    <div className="bg-page min-h-screen text-ink">
+      <Navbar/>
+    </div>
   );
 }
 
