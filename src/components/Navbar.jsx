@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Search */}
           <form
             role="search"
-            className="order-last flex w-full md:flex-1 md:order-none"
+            className="order-last flex w-full md:flex-1 md:order-0"
           >
             <label htmlFor="search" className="sr-only">
               Search Products
