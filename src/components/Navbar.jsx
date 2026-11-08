@@ -1,16 +1,15 @@
 import { useState } from "react";
 
 const categories = [
-    "Electronics",
-    "Fashion",
-    "Home",
-    "Fitness",
-    "Beauty",
-    "Deals",
-  ];
+  "Electronics",
+  "Fashion",
+  "Home",
+  "Fitness",
+  "Beauty",
+  "Deals",
+];
 
 const Navbar = () => {
-  
   const [open, setOpen] = useState(false);
 
   return (
