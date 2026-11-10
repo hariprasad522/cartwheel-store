@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="border-b border-line bg-page">
+      <header className="border-b border-line bg-panel">
         <div className="mx-auto px-4 py-3 max-w-6xl flex flex-wrap items-center gap-3 md:gap-5 md:px-6">
           {/* logo */}
           <Link
