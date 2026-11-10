@@ -19,7 +19,7 @@ const Navbar = () => {
           {/* logo */}
           <a
             href="/"
-            className="flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
+            className="font-display flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
           >
             <svg
               width="30"
