@@ -23,11 +23,11 @@
   --color-line: var(--line);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-brand: #16162F
-  --color-brand-soft: #FEF3DC
+  --color-brand: #16162F;
+  --color-brand-soft: #FEF3DC;
   --color-marigold: #F5A524;
   --color-safe: #0F766E;
-  --color-warn: #B45309
+  --color-warn: #B45309;
   --color-over: #B42318;
   --color-deal:  #B45309;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;

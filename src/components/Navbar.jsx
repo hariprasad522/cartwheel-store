@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const categories = [
   "Electronics",
@@ -17,8 +18,8 @@ const Navbar = () => {
       <header className="border-b border-line bg-page">
         <div className="mx-auto px-4 py-3 max-w-6xl flex flex-wrap items-center gap-3 md:gap-5 md:px-6">
           {/* logo */}
-          <a
-            href="/"
+          <Link
+            to="/"
             className="font-display flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
           >
             <svg
@@ -35,11 +36,12 @@ const Navbar = () => {
               <path d="M12 3v7M12 14v7M3 12h7M14 12h7" />
             </svg>
             CartWheel
-          </a>
+          </Link>
 
           {/* Search */}
           <form
             role="search"
+            onSubmit={(e) => {e.preventDefault()}}
             className="order-last flex w-full md:flex-1 md:order-0"
           >
             <label htmlFor="search" className="sr-only">
@@ -49,9 +51,9 @@ const Navbar = () => {
               id="search"
               type="search"
               placeholder="Search..."
-              className="min-w-0 flex-1 text-muted rounded-l-lg border border-r-0 px-3 py-2 border-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              className="min-w-0 flex-1 text-muted rounded-l-lg border border-r-0 px-3 py-2 border-line focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             />
-            <button className="rounded-r-lg bg-ink text-white px-4 py-2 font-bold">
+            <button type="button" className="rounded-r-lg bg-brand text-white px-4 py-2 font-bold">
               Search
             </button>
           </form>
@@ -62,16 +64,16 @@ const Navbar = () => {
               aria-label="Main"
               className="hidden items-center gap-5 font-medium md:flex"
             >
-              <a href="/">Wishlist</a>
-              <a href="/">Compare</a>
+              <Link to="/">Wishlist</Link>
+              <Link to="/">Compare</Link>
             </nav>
 
-            <a
-              href="/cart"
-              className="rounded-lg bg-ink px-4 py-2 font-bold text-white"
+            <Link
+              to="/cart"
+              className="rounded-lg bg-brand px-4 py-2 font-bold text-white"
             >
               Cart (0)
-            </a>
+            </Link>
 
             <button
               onClick={() => {
@@ -95,24 +97,25 @@ const Navbar = () => {
             aria-label="Mobile"
             className="flex flex-col border-t border-line px-4 py-2 md:hidden"
           >
-            <a href="/" className="font-medium py-3">
+            <Link to="/" className="font-medium py-3">
               Wishlist
-            </a>
-            <a href="/" className="font-medium py-3">
+            </Link>
+            <Link to="/" className="font-medium py-3">
               Compare
-            </a>
+            </Link>
           </nav>
         )}
 
         {/* Category row */}
         <nav className="mx-auto max-w-6xl overflow-x-auto px-4 pb-3 text-sm flex gap-6 font-medium whitespace-nowrap md:px-6">
           {categories.map((category) => (
-            <a
+            <Link
+              to="/"
               key={category}
               className={category === "Deals" ? "text-deal" : ""}
             >
               {category}
-            </a>
+            </Link>
           ))}
         </nav>
       </header>
