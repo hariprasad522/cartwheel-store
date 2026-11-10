@@ -51,7 +51,7 @@ const Navbar = () => {
               placeholder="Search..."
               className="min-w-0 flex-1 text-muted rounded-l-lg border border-r-0 px-3 py-2 border-slate-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             />
-            <button className="rounded-r-lg bg-brand text-white px-4 py-2 font-bold">
+            <button className="rounded-r-lg bg-ink text-white px-4 py-2 font-bold">
               Search
             </button>
           </form>
@@ -68,7 +68,7 @@ const Navbar = () => {
 
             <a
               href="/cart"
-              className="rounded-lg bg-brand px-4 py-2 font-bold text-white"
+              className="rounded-lg bg-ink px-4 py-2 font-bold text-white"
             >
               Cart (0)
             </a>

@@ -2,11 +2,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --page: #ffffff;
-  --panel: #f8fafc;
-  --line: #e2e8f0;
-  --ink: #0f172a;
-  --muted: #475569;
+  --page: #FAF7F2;
+  --panel: #FFFFFF;
+  --line: #E8E2D9;
+  --ink: #16162F;
+  --muted: #4B4B66;
 }
 
 .dark {
@@ -23,9 +23,11 @@
   --color-line: var(--line);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
-  --color-brand: #6d28d9;
-  --color-brand-deep: #4c1d95;
-  --color-brand-soft: #ede9fe;
-  --color-deal: #c2410c;
+  --color-marigold: #F5A524;
+  --color-marigold-soft: #FEF3DC;
+  --color-marigold-safe: #0F766E;
+  --color-marigold-over: #B42318;
+  --color-deal:  #B45309;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif;
 }
