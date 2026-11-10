@@ -41,7 +41,9 @@ const Navbar = () => {
           {/* Search */}
           <form
             role="search"
-            onSubmit={(e) => {e.preventDefault()}}
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
             className="order-last flex w-full md:flex-1 md:order-0"
           >
             <label htmlFor="search" className="sr-only">
@@ -53,7 +55,10 @@ const Navbar = () => {
               placeholder="Search..."
               className="min-w-0 flex-1 text-muted rounded-l-lg border border-r-0 px-3 py-2 border-line focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             />
-            <button type="button" className="rounded-r-lg bg-brand text-white px-4 py-2 font-bold">
+            <button
+              type="button"
+              className="rounded-r-lg bg-brand text-white px-4 py-2 font-bold"
+            >
               Search
             </button>
           </form>
@@ -64,8 +69,8 @@ const Navbar = () => {
               aria-label="Main"
               className="hidden items-center gap-5 font-medium md:flex"
             >
-              <Link to="/">Wishlist</Link>
-              <Link to="/">Compare</Link>
+              <Link to="/wishlist">Wishlist</Link>
+              <Link to="/compare">Compare</Link>
             </nav>
 
             <Link
@@ -97,10 +102,10 @@ const Navbar = () => {
             aria-label="Mobile"
             className="flex flex-col border-t border-line px-4 py-2 md:hidden"
           >
-            <Link to="/" className="font-medium py-3">
+            <Link to="/wishlist" className="font-medium py-3">
               Wishlist
             </Link>
-            <Link to="/" className="font-medium py-3">
+            <Link to="/compare" className="font-medium py-3">
               Compare
             </Link>
           </nav>
@@ -110,7 +115,7 @@ const Navbar = () => {
         <nav className="mx-auto max-w-6xl overflow-x-auto px-4 pb-3 text-sm flex gap-6 font-medium whitespace-nowrap md:px-6">
           {categories.map((category) => (
             <Link
-              to="/"
+              to={`/category/${category.toLowerCase()}`}
               key={category}
               className={category === "Deals" ? "text-deal" : ""}
             >
