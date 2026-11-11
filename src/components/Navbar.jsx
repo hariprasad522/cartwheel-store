@@ -32,7 +32,7 @@ const Navbar = () => {
               aria-hidden="true"
             >
               <circle cx="12" cy="12" r="9" />
-              <circle cx="12" cy="12" r="2" className="fill-deal stroke-deal" />
+              <circle cx="12" cy="12" r="2" className="fill-marigold stroke-marigold" />
               <path d="M12 3v7M12 14v7M3 12h7M14 12h7" />
             </svg>
             CartWheel
