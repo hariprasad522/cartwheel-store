@@ -16,11 +16,11 @@ const Navbar = () => {
   return (
     <>
       <header className="border-b border-line bg-panel">
-        <div className="mx-auto px-4 py-3 max-w-6xl flex flex-wrap items-center gap-3 md:gap-5 md:px-6">
+        <div className="w-full mx-auto px-4 py-3 max-w-6xl flex flex-nowrap items-center gap-3 md:gap-5 md:px-6">
           {/* logo */}
           <Link
             to="/"
-            className="font-display flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
+            className="shrink-0 font-display flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
           >
             <svg
               width="30"
@@ -32,7 +32,12 @@ const Navbar = () => {
               aria-hidden="true"
             >
               <circle cx="12" cy="12" r="9" />
-              <circle cx="12" cy="12" r="2" className="fill-marigold stroke-marigold" />
+              <circle
+                cx="12"
+                cy="12"
+                r="2"
+                className="fill-marigold stroke-marigold"
+              />
               <path d="M12 3v7M12 14v7M3 12h7M14 12h7" />
             </svg>
             CartWheel
@@ -52,15 +57,9 @@ const Navbar = () => {
             <input
               id="search"
               type="search"
-              placeholder="Search..."
-              className="min-w-0 flex-1 text-muted rounded-l-lg border border-r-0 px-3 py-2 border-line focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              placeholder="Search kurtas, headphones, yoga mats..."
+              className="min-w-0 flex-1 text-muted rounded-full border px-3 py-2 border-line focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
             />
-            <button
-              type="button"
-              className="rounded-r-lg bg-brand text-white px-4 py-2 font-bold"
-            >
-              Search
-            </button>
           </form>
 
           {/* Links, cart, menu button */}
@@ -73,9 +72,22 @@ const Navbar = () => {
               <Link to="/compare">Compare</Link>
             </nav>
 
+            {/* Budget Indicator */}
+            <div className="flex gap-2 items-center shrink-0 rounded-full bg-marigold-soft px-3 py-1.5">
+              <div
+                className="h-12 w-12 flex items-center justify-center border border-line border-r-safe rounded-full border-4 text-9px font-bold "
+                aria-label="40 percent of budget used"
+              >
+                40%
+              </div>
+              <span className="whitespace-nowrap text-sm font-semibold">
+                ₹3,000 left
+              </span>
+            </div>
+
             <Link
               to="/cart"
-              className="rounded-lg bg-brand px-4 py-2 font-bold text-white"
+              className="rounded-lg bg-ink px-4 py-2 font-bold text-white"
             >
               Cart (0)
             </Link>
