@@ -11,6 +11,6 @@ export const CATEGORIES = [
   },
 ];
 
-export const categoryOf = (apiCategory) => {
+export const categoryOf = (apiCategory) => 
   CATEGORIES.find((c) => c.source.includes(apiCategory)) ?? null;
-};
+
