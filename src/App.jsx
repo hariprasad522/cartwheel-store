@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="bg-page min-h-screen text-ink">
       <Navbar/>
+      <main>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/wishlist" element={<Wishlist/>} />
@@ -21,6 +22,7 @@ function App() {
         <Route path="/category/:slug" element={<Category/>} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      </main>
       <Footer/>
     </div>
   );

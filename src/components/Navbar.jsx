@@ -1,140 +1,109 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
+import BudgetRing from "./BudgetRing";
+import Container from "./Container";
+import { CATEGORIES } from "../lib/categories";
+import { formatINR } from "../lib/format";
+import { BUDGET, COUNTS } from "../data/mock";
 
-const categories = [
-  "Electronics",
-  "Fashion",
-  "Home",
-  "Fitness",
-  "Beauty",
-  "Deals",
-];
+const topLink = ({ isActive }) =>
+  isActive
+    ? "font-bold underline decoration-marigold decoration-2 underline-offset-8"
+    : "hover:text-muted";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const left = BUDGET.limit - BUDGET.used;
 
   return (
     <>
-      <header className="border-b border-line bg-panel">
-        <div className="w-full mx-auto px-4 py-3 max-w-6xl flex flex-nowrap items-center gap-3 md:gap-5 md:px-6">
+      {/* announcement bar */}
+      <div className="bg-ink px-4 py-2 text-center text-[13px] text-panel">
+        Free delivery above ₹999 ·{" "}
+        <b className="text-marigold">New:</b> set a budget and watch it as you shop
+      </div>
+
+      <header className="sticky top-0 z-40 border-b border-line bg-panel">
+        <Container className="flex flex-wrap items-center gap-3 py-3 md:flex-nowrap md:gap-5">
           {/* logo */}
-          <Link
-            to="/"
-            className="shrink-0 font-display flex items-center gap-2 text-xl font-bold text-brand md:text-2xl"
-          >
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <circle
-                cx="12"
-                cy="12"
-                r="2"
-                className="fill-marigold stroke-marigold"
-              />
-              <path d="M12 3v7M12 14v7M3 12h7M14 12h7" />
+          <Link to="/" className="flex shrink-0 items-center gap-2 font-display text-xl font-bold text-ink md:text-2xl">
+            <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+              <circle cx="15" cy="15" r="12" fill="none" stroke="currentColor" strokeWidth="3" />
+              <circle cx="15" cy="15" r="4" className="fill-marigold" />
+              <path d="M15 3v8M15 19v8M3 15h8M19 15h8" stroke="currentColor" strokeWidth="2" />
             </svg>
             CartWheel
           </Link>
 
-          {/* Search */}
-          <form
-            role="search"
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-            className="order-last flex w-full md:flex-1 md:order-0"
-          >
-            <label htmlFor="search" className="sr-only">
-              Search Products
-            </label>
+          {/* search */}
+          <form role="search" onSubmit={(e) => e.preventDefault()} className="order-last flex w-full md:order-none md:flex-1">
+            <label htmlFor="search" className="sr-only">Search products</label>
             <input
               id="search"
               type="search"
-              placeholder="Search kurtas, headphones, yoga mats..."
-              className="min-w-0 flex-1 text-muted rounded-full border px-3 py-2 border-line focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+              placeholder="Search kurtas, headphones, yoga mats…"
+              className="min-h-11 min-w-0 flex-1 rounded-full border border-line bg-panel px-4 text-sm placeholder:text-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ink"
             />
           </form>
 
-          {/* Links, cart, menu button */}
+          {/* right side */}
           <div className="ml-auto flex items-center gap-3 md:gap-5">
-            <nav
-              aria-label="Main"
-              className="hidden items-center gap-5 font-medium md:flex"
-            >
-              <Link to="/wishlist">Wishlist</Link>
-              <Link to="/compare">Compare</Link>
+            <nav aria-label="Main" className="hidden items-center gap-5 text-[15px] font-medium md:flex">
+              <NavLink to="/wishlist" className={topLink}>Wishlist ({COUNTS.wishlist})</NavLink>
+              <NavLink to="/compare" className={topLink}>Compare</NavLink>
             </nav>
 
-            {/* Budget Indicator */}
-            <div className="flex gap-2 items-center shrink-0 rounded-full bg-marigold-soft px-3 py-1.5">
-              <div
-                className="h-12 w-12 flex items-center justify-center border border-line border-r-safe rounded-full border-4 text-9px font-bold "
-                aria-label="40 percent of budget used"
-              >
-                40%
-              </div>
-              <span className="whitespace-nowrap text-sm font-semibold">
-                ₹3,000 left
-              </span>
+            {/* budget chip */}
+            <div className="hidden shrink-0 items-center gap-2 rounded-full bg-marigold-soft py-1 pr-3.5 pl-1 sm:flex">
+              <BudgetRing used={BUDGET.used} limit={BUDGET.limit} size={36} />
+              <span className="whitespace-nowrap text-[13px] font-semibold">{formatINR(left)} left</span>
             </div>
 
-            <Link
-              to="/cart"
-              className="rounded-lg bg-ink px-4 py-2 font-bold text-white"
-            >
-              Cart (0)
+            <Link to="/cart" className="inline-flex min-h-11 items-center rounded-lg bg-ink px-4 text-sm font-semibold text-panel">
+              Cart ({COUNTS.cart})
             </Link>
 
             <button
-              onClick={() => {
-                setOpen(!open);
-                console.log("button clicked");
-              }}
+              type="button"
+              onClick={() => setOpen(!open)}
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label="Menu"
-              className="flex items-center justify-center h-11 w-11 rounded-lg border border-line md:hidden"
+              className="grid size-11 place-items-center rounded-lg border border-line md:hidden"
             >
               {open ? "✕" : "☰"}
             </button>
           </div>
-        </div>
+        </Container>
 
-        {/* Phone Menu  */}
+        {/* mobile menu */}
         {open && (
-          <nav
-            id="mobile-menu"
-            aria-label="Mobile"
-            className="flex flex-col border-t border-line px-4 py-2 md:hidden"
-          >
-            <Link to="/wishlist" className="font-medium py-3">
-              Wishlist
-            </Link>
-            <Link to="/compare" className="font-medium py-3">
-              Compare
-            </Link>
+          <nav id="mobile-menu" aria-label="Mobile" className="border-t border-line md:hidden">
+            <Container className="py-2">
+              <div className="my-2 flex items-center gap-3 rounded-xl bg-marigold-soft p-3">
+                <BudgetRing used={BUDGET.used} limit={BUDGET.limit} size={44} />
+                <div>
+                  <p className="font-semibold">{formatINR(left)} left</p>
+                  <p className="text-[13px] text-muted">of {formatINR(BUDGET.limit)} budget</p>
+                </div>
+              </div>
+              <Link to="/wishlist" className="block py-3 font-medium">Wishlist ({COUNTS.wishlist})</Link>
+              <Link to="/compare" className="block border-t border-line py-3 font-medium">Compare</Link>
+            </Container>
           </nav>
         )}
 
-        {/* Category row */}
-        <nav className="mx-auto max-w-6xl overflow-x-auto px-4 pb-3 text-sm flex gap-6 font-medium whitespace-nowrap md:px-6">
-          {categories.map((category) => (
-            <Link
-              to={`/category/${category.toLowerCase()}`}
-              key={category}
-              className={category === "Deals" ? "text-deal" : ""}
-            >
-              {category}
-            </Link>
-          ))}
-        </nav>
+        {/* category row */}
+        <Container>
+          <nav aria-label="Categories" className="flex gap-7 overflow-x-auto whitespace-nowrap pb-3 text-sm font-medium">
+            {CATEGORIES.map((c) => (
+              <NavLink key={c.slug} to={`/category/${c.slug}`} className={topLink}>
+                {c.label}
+              </NavLink>
+            ))}
+            <NavLink to="/category/deals" className="font-bold text-deal">Deals</NavLink>
+          </nav>
+        </Container>
       </header>
     </>
   );

@@ -5,5 +5,5 @@ const inr = new Intl.NumberFormat("en-IN", {
 });
 
 export const formatINR = (amount) => {
-  inr.format(amount);
+  return inr.format(amount);
 };
