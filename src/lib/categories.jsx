@@ -31,8 +31,8 @@ export const CATEGORIES = [
     label: "Beauty",
     source: ["beauty", "fragrances", "skin-care"],
   },
-  { slug: "fitness", label: "Fitness", source: [] }, // DECISION: see note below
-  { slug: "sports", label: "Sports", source: ["sports-accessories"] },
+  { slug: "sports", label: "Sports", source: ["sports-accessories"] }, // DECISION: see note below
+  // { slug: "sports", label: "Sports", source: ["sports-accessories"] },
 ];
 
 // .find() returns the first match, or undefined. "?? null" turns undefined into null.
