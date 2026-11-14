@@ -8,6 +8,7 @@ import Cart from "./pages/Cart"
 import Category from "./pages/Category"
 import NotFound from "./pages/NotFound"
 import { Route, Routes } from "react-router";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <main>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/products" element={<Products />} />
+
         <Route path="/wishlist" element={<Wishlist/>} />
         <Route path="/compare" element={<Compare/>} />
         <Route path="/cart" element={<Cart/>} />
