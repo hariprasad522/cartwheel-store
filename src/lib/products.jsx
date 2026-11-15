@@ -11,5 +11,29 @@ export const normalizeProduct = (p) => {
   const rating = Number(p.rating).toFixed(1);
   const thumbnail = p.thumbnail;
   const discount = Math.round((1 - price / mrp) * 100);
-  return { id: p.id,category: category.slug, title: p.title, price, mrp, rating, thumbnail, discount };
+  return {
+    id: p.id,
+    category: category.slug,
+    title: p.title,
+    price,
+    mrp,
+    rating,
+    thumbnail,
+    discount,
+    warranty: p.warrantyInformation ?? "",
+    shipping: p.shippingInformation ?? "",
+    returnPolicy: p.returnPolicy ?? "",
+    images: p.images ?? [],
+
+    
+    description: p.description,
+    brand: p.brand ?? "",
+    
+    reviewCount: p.reviews?.length ?? 0,
+    inStock: p.stock > 0,
+    lowStock: p.stock > 0 && p.stock <= 10,
+    
+    
+    
+  };
 };

@@ -87,8 +87,8 @@ const Navbar = () => {
                   <p className="text-[13px] text-muted">of {formatINR(BUDGET.limit)} budget</p>
                 </div>
               </div>
-              <Link to="/wishlist" className="block py-3 font-medium">Wishlist ({COUNTS.wishlist})</Link>
-              <Link to="/compare" className="block border-t border-line py-3 font-medium">Compare</Link>
+              <Link to="/wishlist" onClick={() => setOpen(false)} className="block py-3 font-medium">Wishlist ({COUNTS.wishlist})</Link>
+              <Link to="/compare" onClick={() => setOpen(false)} className="block border-t border-line py-3 font-medium">Compare</Link>
             </Container>
           </nav>
         )}
