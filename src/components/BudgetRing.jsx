@@ -7,7 +7,7 @@ const STROKE = {
   over: "stroke-over",
 };
 
-const BudgetRing = ({ used, limit, size = 72 }) => {
+const BudgetRing = ({ used, limit, size = 72}) => {
   const percent = limit > 0 ? Math.round((used / limit) * 100) : 0;
   const status = getBudgetStatus(used, limit);
 
@@ -39,6 +39,7 @@ const BudgetRing = ({ used, limit, size = 72 }) => {
         transform="rotate(-90 36 36)"
         className={STROKE[status]}
       />
+      
       <text
         x="36"
         y="41"
@@ -49,6 +50,7 @@ const BudgetRing = ({ used, limit, size = 72 }) => {
       >
         {percent}%
       </text>
+      
     </svg>
   );
 };
