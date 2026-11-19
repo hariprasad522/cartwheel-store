@@ -11,6 +11,8 @@ const stockText = (p) => (!p.inStock ? "Out of stock" : p.lowStock ? "Low stock"
 const CompareTable = ({ products }) => {
   const lowestPrice = Math.min(...products.map((p) => p.price));
   const topRating = Math.max(...products.map((p) => p.rating));
+  // console.log({ lowestPrice, topRating });
+  
 
   // Each row: a label, and a function that turns one product into the cell content.
   const rows = [
@@ -26,7 +28,7 @@ const CompareTable = ({ products }) => {
     {
       label: "Rating",
       value: (p) =>
-        p.rating === topRating ? (
+        Number(p.rating) === topRating ? (
           <b>{p.rating} / 5 (best rating)</b>
         ) : (
           `${p.rating} / 5`

@@ -23,7 +23,9 @@ const Wishlist = () => {
     <Container className="pt-7">
       <h1 className="font-display text-4xl font-bold tracking-tight md:text-[44px]">
         Wishlist
-        <span className="ml-3 text-xl font-normal text-muted">{COUNTS.wishlist} saved</span>
+        <span className="ml-3 font-sans text-xl font-normal tracking-normal text-muted">
+          {COUNTS.wishlist} saved
+        </span>
       </h1>
 
       <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">

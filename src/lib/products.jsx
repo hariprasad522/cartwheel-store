@@ -9,6 +9,7 @@ export const normalizeProduct = (p) => {
   const price = Math.round(p.price * USD_TO_INR);
   const mrp = Math.round(price / (1 - p.discountPercentage / 100));
   const rating = Number(p.rating).toFixed(1);
+  
   const thumbnail = p.thumbnail;
   const discount = Math.round((1 - price / mrp) * 100);
   return {
