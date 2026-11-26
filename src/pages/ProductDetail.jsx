@@ -10,20 +10,21 @@ import Gallery from "../components/detail/Gallery";
 import MobileBuyBar from "../components/detail/MobileBuyBar";
 import { CATEGORIES } from "../lib/categories";
 import { formatINR } from "../lib/format";
+import ErrorState from "../components/ErrorState";
+import StateMessage from "../components/StateMessage";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { products, loading, error } = useProducts();
 
-  if (error) {
-    return (
-      <Container className="py-16">
-        <p role="alert" className="font-semibold text-over">
-          We could not load this product. Please try again.
-        </p>
-      </Container>
-    );
-  }
+
+if (error) {
+  return (
+    <Container className="py-12">
+      <ErrorState />
+    </Container>
+  );
+}
 
   if (loading) {
     return (
@@ -38,15 +39,16 @@ const ProductDetail = () => {
   const product = products.find((p) => p.id === Number(id));
 
   if (!product) {
-    return (
-      <Container className="py-16">
-        <h1 className="font-display text-3xl font-bold">Product not found</h1>
-        <Link to="/products" className="mt-3 inline-block font-semibold underline">
-          Back to all products
-        </Link>
-      </Container>
-    );
-  }
+  return (
+    <Container className="py-12">
+      <StateMessage
+        title="Product not found"
+        text="It may have been removed or the link is wrong."
+        action={{ label: "Browse products", to: "/products" }}
+      />
+    </Container>
+  );
+}
 
   const categoryLabel = CATEGORIES.find((c) => c.slug === product.category)?.label;
   const stock = !product.inStock

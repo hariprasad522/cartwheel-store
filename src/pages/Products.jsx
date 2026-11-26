@@ -8,6 +8,9 @@ import ProductCard from "../components/ProductCard";
 import FilterPanel from "../components/listing/FilterPanel";
 import FilterSheet from "../components/listing/FilterSheet";
 import SortSelect from "../components/listing/SortSelect";
+import ErrorState from "../components/ErrorState";
+import ProductCardSkeleton from "../components/ProductCardSkeleton";
+import StateMessage from "../components/StateMessage";
 
 const Products = () => {
   const { products, loading, error } = useProducts();
@@ -16,10 +19,8 @@ const Products = () => {
 
   if (error) {
     return (
-      <Container className="py-16">
-        <p role="alert" className="font-semibold text-over">
-          We could not load products. Please try again.
-        </p>
+      <Container className="py-12">
+        <ErrorState />
       </Container>
     );
   }
@@ -27,8 +28,10 @@ const Products = () => {
   return (
     <Container className="pt-7">
       <nav aria-label="Breadcrumb" className="text-sm text-muted">
-        <Link to="/" className="hover:text-ink">Home</Link> /{" "}
-        <span aria-current="page">Products</span>
+        <Link to="/" className="hover:text-ink">
+          Home
+        </Link>{" "}
+        / <span aria-current="page">Products</span>
       </nav>
       <h1 className="mb-6 mt-2 font-display text-4xl font-bold tracking-tight md:text-[44px]">
         All products
@@ -61,21 +64,44 @@ const Products = () => {
             </p>
             <Badge className="gap-1.5">
               Electronics
-              <button type="button" aria-label="Remove Electronics filter">×</button>
+              <button type="button" aria-label="Remove Electronics filter">
+                ×
+              </button>
             </Badge>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+          {!loading && shown.length === 0 ? (
+            <StateMessage
+              as="h2"
+              title="No results for “kurtaa”"
+              text="Check the spelling or clear your filters."
+              action={{ label: "Clear filters" }}
+            />
+          ) : (
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+              {loading
+                ? Array.from({ length: 6 }, (_, i) => (
+                    <ProductCardSkeleton key={i} />
+                  ))
+                : shown.map((p) => <ProductCard key={p.id} product={p} />)}
+            </div>
+          )}
+
+          {/* <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
             {loading
               ? Array.from({ length: 6 }, (_, i) => (
                   <div key={i} className="h-80 animate-pulse rounded-xl bg-line" />
                 ))
               : shown.map((p) => <ProductCard key={p.id} product={p} />)}
-          </div>
+          </div> */}
         </section>
       </div>
 
-      <FilterSheet open={filtersOpen} onClose={() => setFiltersOpen(false)} count={shown.length} />
+      <FilterSheet
+        open={filtersOpen}
+        onClose={() => setFiltersOpen(false)}
+        count={shown.length}
+      />
     </Container>
   );
 };

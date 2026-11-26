@@ -3,6 +3,7 @@ import { useProducts } from "../../lib/useProducts";
 import BudgetStatusBox from "./BudgetStatusBox";
 import { formatINR } from "../../lib/format";
 import { BUDGET } from "../../data/mock";
+import Button from "../Button";
 
 const CartDrawer = ({ onClose }) => {
   const { products } = useProducts();
@@ -54,13 +55,7 @@ const CartDrawer = ({ onClose }) => {
           <BudgetStatusBox subtotal={subtotal} limit={BUDGET.limit} size={44} />
         </div>
 
-        <Link
-          to="/cart"
-          onClick={onClose}
-          className="flex min-h-11 w-full items-center justify-center rounded-lg bg-ink px-4 text-sm font-semibold text-panel"
-        >
-          Review cart
-        </Link>
+        <Button to="/cart" onClick={onClose} className="w-full">Review cart</Button>
       </div>
     </div>
   );

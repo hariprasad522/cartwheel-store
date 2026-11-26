@@ -7,19 +7,20 @@ import DealOfTheDay from "../components/Home/DealOfTheDay";
 import FeaturedProducts from "../components/Home/FeaturedProducts";
 import CompareBanner from "../components/Home/CompareBanner";
 import TrustStrip from "../components/Home/TrustStrip";
+import ErrorState from "../components/ErrorState";
 
 const Home = () => {
   const { products, error } = useProducts();
 
-  if (error) {
-    return (
-      <Container className="py-16">
-        <p role="alert" className="font-semibold text-over">
-          We could not load products. Please try again.
-        </p>
-      </Container>
-    );
-  }
+  
+
+if (error) {
+  return (
+    <Container className="py-12">
+      <ErrorState />
+    </Container>
+  );
+}
 
   return (
     <>

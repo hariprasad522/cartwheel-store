@@ -1,19 +1,20 @@
 import { useProducts } from "../lib/useProducts";
 import Container from "../components/Container";
 import CompareTable from "../components/compare/CompareTable";
+ import ErrorState from "../components/ErrorState";
 
 const Compare = () => {
   const { products, loading, error } = useProducts();
 
-  if (error) {
-    return (
-      <Container className="py-16">
-        <p role="alert" className="font-semibold text-over">
-          We could not load products to compare. Please try again.
-        </p>
-      </Container>
-    );
-  }
+ 
+
+if (error) {
+  return (
+    <Container className="py-12">
+      <ErrorState />
+    </Container>
+  );
+}
 
   return (
     <Container className="pt-7">
